@@ -1,4 +1,5 @@
 import './Navbar.css'
+import CardWidget from './CardWidget.js'
 
 const NavBar = () => {
     return (
@@ -22,6 +23,7 @@ const NavBar = () => {
             </ul>
             </div>
         </div>
+        <CardWidget/>
         </nav>
     )
 }
