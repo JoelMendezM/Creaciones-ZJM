@@ -1,14 +1,12 @@
-import ItemCount from "./ItemCount"
+import ItemCount from "../ItemCount.js"
 
 
 const ItemListContainer = ({name}) => {
-    const onAdd = () => {
-        console.log('agregado al carrito');
-    }
+   
     return (
         <div>
             <p>{name}</p>
-            <ItemCount onAdd = {onAdd} stock="15" />
+            <ItemCount onAdd='Agregar al carrito'  stock="15" />
         </div>
     )
 }
