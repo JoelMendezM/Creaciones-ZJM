@@ -3,6 +3,7 @@ import ItemCount from "../ItemCount.js"
 import ItemList from "../ItemList/ItemList.js"
 import image1 from "../../images/top-modelo-1.jpeg"
 import image2 from "../../images/top-modelo-2.jpeg"
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer.js"
 
 const getItem = () => {
     return new Promise((resolve, reject) => {
@@ -47,6 +48,7 @@ const ItemListContainer = ({name}) => {
             <p>{name}</p>
             <ItemCount onAdd='Agregar al carrito'  stock="15" />
             <ItemList items={listProduct}/>
+            <ItemDetailContainer />
         </div>
     )
 }

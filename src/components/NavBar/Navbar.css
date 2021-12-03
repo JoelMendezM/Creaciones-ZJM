@@ -2,3 +2,7 @@
 .navbarstyle {
   width: 100%;
 }
+
+li.nav-item {
+  margin: 0 10px
+}

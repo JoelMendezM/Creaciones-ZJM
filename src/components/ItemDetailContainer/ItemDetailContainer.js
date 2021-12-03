@@ -39,8 +39,8 @@ const ItemDetailContainer = () => {
         <React.Fragment>
             <ItemDetail 
                 key={uniqueItem.id} 
-                price={uniqueItem && uniqueItem.price ? uniqueItem.price : ''}
-                stock={uniqueItem && uniqueItem.stock ? uniqueItem.stock : ''}
+                price={uniqueItem && uniqueItem.price ? uniqueItem.price : 0}
+                stock={uniqueItem && uniqueItem.stock ? uniqueItem.stock : 0}
                 picture1={uniqueItem && uniqueItem.picture1? uniqueItem.picture1 : ''}
                 picture2={uniqueItem && uniqueItem.picture2? uniqueItem.picture2 : ''}
             />
