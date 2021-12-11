@@ -1,6 +1,9 @@
 import React from "react"
+import ItemCount from "../ItemCount"
+import { useParams } from "react-router"
 
 const ItemDetail = ({picture1, picture2, uniqueName, price, stock}) => {
+    const { type } = useParams();
 
     return (
         <React.Fragment>
@@ -40,6 +43,7 @@ const ItemDetail = ({picture1, picture2, uniqueName, price, stock}) => {
                 <a href="#" className="card-link">Agregar al carrito</a>
               </div>
             </div>
+            <ItemCount onAdd='Agregar al carrito'  stock="15" />
         </React.Fragment>
     )
 }

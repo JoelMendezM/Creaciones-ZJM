@@ -1,0 +1,18 @@
+[
+    {
+        "id":1,
+        "name":"Top dama",
+        "description":"deportivo, modelo 1",
+        "picture":"../../images/top-modelo-1.jpeg",
+        "stock":10,
+        "type":"deportivo"
+    },
+    {
+        "id":2,
+        "name":"Top dama",
+        "description":"verano",
+        "picture":"../../images/top-modelo-2.jpeg",
+        "stock":12,
+        "type":"verano"
+    }
+]

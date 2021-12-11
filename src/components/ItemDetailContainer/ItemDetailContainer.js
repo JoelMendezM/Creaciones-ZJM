@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
         })
     },[])
 
-    console.log(uniqueItem);
+    // console.log(uniqueItem);
 
     return (
         <React.Fragment>
