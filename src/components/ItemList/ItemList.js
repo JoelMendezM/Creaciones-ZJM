@@ -11,7 +11,9 @@ const ItemList = ({items}) => {
                type={i.type} 
                description={i.description} 
                stock={i.stock} 
-               picture={i.picture}/>
+               frontPicture={i.frontPicture}
+               id={i.id}
+               items={items}/>
             )
         }
         </div>

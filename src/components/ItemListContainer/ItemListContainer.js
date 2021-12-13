@@ -6,7 +6,7 @@ const ItemListContainer = () => {
     const [listProduct, setListProduct] = useState([]);
 
     useEffect(() => {
-        getItems().then(response => console.log(response, "ahora si"));
+        getItems().then(response => response);
 
         const list = getItems();
         
@@ -16,7 +16,7 @@ const ItemListContainer = () => {
         })()
         },[])
 
-    console.log(listProduct);
+
 
     return (
         <div>
