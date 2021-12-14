@@ -5,7 +5,7 @@ const ItemList = ({items}) => {
 
     return (
         <div className="itemListContainer">
-            {items.map(i =>
+            {items && items.length > 0 && items.map(i =>
             <Item 
                key={i.id}
                type={i.type} 
@@ -13,7 +13,8 @@ const ItemList = ({items}) => {
                stock={i.stock} 
                frontPicture={i.frontPicture}
                id={i.id}
-               items={items}/>
+               items={items}
+               />
             )
         }
         </div>

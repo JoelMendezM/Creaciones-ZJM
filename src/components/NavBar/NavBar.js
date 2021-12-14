@@ -17,23 +17,9 @@ const NavBar = () => {
                 <li className="nav-item">
                 <NavLink className="nav-link btn btn-outline-primary" aria-current="page" to="/ourHistory">Nuestra historia</NavLink>
                 </li>
-                <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Productos y servicios
-                  </button>
-                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><NavLink className="nav-link btn btn-outline-primary" to="/products">Productos</NavLink></li>
-                    <li><a className="dropdown-item" href="#">Servicios</a></li>
-                  </ul>
-                </div>
-
-                {/* <
-                
-                li className="nav-item"> */}
-                {/* <
-                
-                NavLink className="nav-link btn btn-outline-primary" to="/products">Productos y servicios</NavLink> */}
-                {/* </li> */}
+                <li className="nav-item">
+                <NavLink className="nav-link btn btn-outline-primary" aria-current="page" to="/productsAndServices">Productos y servicios</NavLink>
+                </li>
                 <li className="nav-item">
                 <NavLink className="nav-link btn btn-outline-primary" to="/socialMedia">Redes sociales</NavLink>
                 </li>

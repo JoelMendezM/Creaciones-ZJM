@@ -7,10 +7,10 @@ const Item = ({type, description, stock, frontPicture, id}) => {
             <div className="card" style={{width: '18rem', margin:20}}>
                 <img src={frontPicture} className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">Top {type} </h5>
+                    <h5 className="card-title">{type} </h5>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Modelo: {description}</li>
+                    <li className="list-group-item">{description}</li>
                     <li className="list-group-item">Stock: {stock}</li>
                 </ul>
                 <div className="card-body">

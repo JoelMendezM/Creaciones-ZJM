@@ -2,31 +2,61 @@
     {
         "id":1,
         "productName":"Top de dama",
-        "description":"deportivo, modelo 1",
-        "frontPicture":"./jsonImages/sport-model1-front.jpeg",
-        "backPicture":"./jsonImages/sport-model1-back.jpeg",
+        "description":"Top para entrenar, modelo 1",
+        "detail":"Top deportivo ajustable para que puedas hacer el training de tu preferencia",
+        "frontPicture":"/json-images/sport-model1-front.jpeg",
+        "backPicture":"/json-images/sport-model1-back.jpeg",
         "stock":10,
         "price":1200,
-        "type":"deportivo"
+        "type":"Top deportivo",
+        "productsOrServices":"products"
     },
     {
         "id":2,
         "productName":"Top de dama",
-        "description":"para el verano, modelo 1",
-        "frontPicture":"./jsonImages/summer-model1-front.jpeg",
-        "backPicture":"./jsonImages/summer-model1-back.jpeg",
+        "description":"Top para el verano, modelo 1",
+        "detail":"Top de venerano con un diseño único y fresco en la parte trasera del mismo, floreado y colorido para que puedas brillar junto con el sol del verano",
+        "frontPicture":"/json-images/summer-model1-front.jpeg",
+        "backPicture":"/json-images/summer-model1-back.jpeg",
         "stock":12,
         "price":800,
-        "type":"verano"
+        "type":"Top verano",
+        "productsOrServices":"products"
     },
     {
         "id":3,
         "productName":"Top de dama",
-        "description":"para el verano, modelo 2",
-        "frontPicture":"./jsonImages/summer-model2-front.jpeg",
-        "backPicture":"./jsonImages/summer-model2-back.jpeg",
+        "description":"Top para el verano, modelo 2",
+        "detail":"Top de venerano con un diseño único y fresco en la parte trasera del mismo, floreado y colorido para que puedas brillar junto con el sol del verano",
+        "frontPicture":"/json-images/summer-model2-front.jpeg",
+        "backPicture":"/json-images/summer-model2-back.jpeg",
         "stock":15,
         "price":800,
-        "type":"verano"
+        "type":"Top verano",
+        "productsOrServices":"products"
+    },
+    {
+        "id":4,
+        "productName":"Arreglos",
+        "description":"Arreglo general de prendas y/o accesorios",
+        "detail":"Cambios de cremalleras de cualquier prenda, surcidos, parches, reducción de talla y mucho más... ",
+        "frontPicture":"/json-images/fastener-reparation.jpg",
+        "backPicture":"/json-images/fastener-reparation.jpg",
+        "stock":1,
+        "price":"a consultar",
+        "type":"Servico de costura",
+        "productsOrServices":"services"
+    },
+    {
+        "id":5,
+        "productName":"Prendas desde 0",
+        "description":"Si te gusta alguna prenda en particular, nosotros la replicamos",
+        "detail":"Desde vestidos hasta bermudas, cualquier prenda que sea de su agrado podemos hacer una copia!",
+        "frontPicture":"/json-images/model-like-this.jpg",
+        "backPicture":"/json-images/model-like-this.jpg",
+        "stock":1,
+        "price":"a consultar",
+        "type":"Servico de costura",
+        "productsOrServices":"services"
     }
 ]
