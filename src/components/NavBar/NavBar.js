@@ -26,7 +26,7 @@ const NavBar = () => {
             </ul>
             </div>
         </div>
-        <CardWidget/>
+        <NavLink className="nav-link btn btn-outline-primary" to="/basket"><CardWidget/></NavLink>
         </nav>
         </>
     )
