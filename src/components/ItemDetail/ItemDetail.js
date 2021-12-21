@@ -2,22 +2,17 @@ import React, { useEffect, useState } from "react"
 import ItemCount from "../ItemCount"
 import { useParams } from "react-router"
 import { getDetailItem } from "../../Services/getDetailItem"
-import { NavLink } from "react-router-dom"
 
 
 const ItemDetail = () => {
     const { id } = useParams();
     const [productDetail, setProductDetail] = useState({});
-    const [count, setCount] = useState(0);
-    
-    const onAdd = (count) => {
-      console.log(count, "consolelog");
-      setCount(count);
-    }
+     
+      useEffect(() => {
 
-    useEffect(() => {
         getDetailItem(id)
         .then(res => setProductDetail(res));
+
       },[id])
 
     return (
@@ -58,7 +53,8 @@ const ItemDetail = () => {
                 <li className="list-group-item">Stock: {productDetail.stock}</li>
               </ul>
             </div>
-            { count > 0 ? <NavLink to="/basket">Ir a mi carrito</NavLink> : <ItemCount onAdd={onAdd}  stock="15" count={count}/>}
+            {/* { count > 0 ? <NavLink to="/basket">Ir a mi carrito</NavLink> : <ItemCount onAdd={onAdd}  stock="15" count={count}/>} */}
+            <ItemCount productDetail={productDetail}/>
             </React.Fragment>
           )}
         </React.Fragment>

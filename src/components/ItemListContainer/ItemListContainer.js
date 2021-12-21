@@ -19,8 +19,8 @@ const ItemListContainer = () => {
         } else if (productsOrServices === "services") {
         getItemsByServicesCategory(productsOrServices).then(res => setListProduct(res));
 
-    } else {
-        getItems().then(res => setListProduct(res));
+            } else {
+                getItems().then(res => setListProduct(res));
 
     }
     },[productsOrServices,listProduct]);
@@ -37,4 +37,4 @@ const ItemListContainer = () => {
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;
