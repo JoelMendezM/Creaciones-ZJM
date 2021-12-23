@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCart } from '../context/CartContext';
 
-const  Basket = () => {
+const  Cart = () => {
     const [total, setTotal] = useState(0)
     const { cart } = useCart();
     console.log(`cart1`, cart);
@@ -41,4 +41,4 @@ const  Basket = () => {
     )
 }
 
-export default Basket
+export default Cart

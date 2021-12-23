@@ -53,7 +53,6 @@ const ItemDetail = () => {
                 <li className="list-group-item">Stock: {productDetail.stock}</li>
               </ul>
             </div>
-            {/* { count > 0 ? <NavLink to="/basket">Ir a mi carrito</NavLink> : <ItemCount onAdd={onAdd}  stock="15" count={count}/>} */}
             <ItemCount productDetail={productDetail}/>
             </React.Fragment>
           )}
