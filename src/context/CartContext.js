@@ -12,30 +12,28 @@ const useCart = () => {
 
 const CartProvider = ({children}) => {
     const [cart, setCart] = useState([]);
-    const [listProduct, setListProduct] = useState([]);
-    const state = {
-        cart,
-        listProduct
-    }
 
-    const onAddCart = (productDetail) => {
+    const onAddCart = (productDetail, counter) => {
         const newItemToAdd = {
             price: productDetail.price,
             name: productDetail.productName,
             id: productDetail.id,
-            quantity: productDetail.quantity
+            quantity: productDetail.quantity,
+            picture: productDetail.frontPicture
         }
+        console.log(`cart1`, cart)
         if (cart.find(element => element.id === newItemToAdd.id) === undefined) {
             setCart((prevState) => [...prevState, newItemToAdd]);
-            console.log("Se agrego un nuevo proucto")
+            newItemToAdd.quantity = counter;
+            console.log("Se agrego un nuevo producto");
         } else {
-            cart.find(element => element.id === newItemToAdd.id).quantity++;
-            console.log(`El producto ya existe, se añadio 1 en cantidad`, cart)
+            cart.find(element => element.id === newItemToAdd.id).quantity += counter;
+            console.log(`El producto ya existe, se añadio ${counter} en cantidad`, cart)
         }
     }
 
     return (
-        <CartContext.Provider value={{state: state, onAddCart}}>
+        <CartContext.Provider value={{cart, onAddCart}}>
             {children};
         </CartContext.Provider>
     )    

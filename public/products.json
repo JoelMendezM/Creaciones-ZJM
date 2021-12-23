@@ -47,7 +47,7 @@
         "frontPicture":"/json-images/fastener-reparation.jpg",
         "backPicture":"/json-images/fastener-reparation.jpg",
         "stock":1,
-        "price":"a consultar",
+        "price":100,
         "type":"Servico de costura",
         "productsOrServices":"services"
     },
@@ -60,7 +60,7 @@
         "frontPicture":"/json-images/model-like-this.jpg",
         "backPicture":"/json-images/model-like-this.jpg",
         "stock":1,
-        "price":"a consultar",
+        "price":100,
         "type":"Servico de costura",
         "productsOrServices":"services"
     }
