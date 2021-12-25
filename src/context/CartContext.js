@@ -10,30 +10,50 @@ const useCart = () => {
     return context
 }
 
-const CartProvider = ({children}) => {
+    const CartProvider = ({children}) => {
     const [cart, setCart] = useState([]);
+    const [totalItemsQuantity, setTotalItemsQuantity] = useState(0);
 
     const onAddCart = (productDetail, counter) => {
+        let accumItemsQuantity = 0;
+        let isNew = true;
         const newItemToAdd = {
             price: productDetail.price,
             name: productDetail.productName,
             id: productDetail.id,
-            quantity: productDetail.quantity,
+            quantity: counter,
             picture: productDetail.frontPicture
         }
-        console.log(`cart1`, cart)
-        if (cart.find(element => element.id === newItemToAdd.id) === undefined) {
+        
+        const updatedCart = cart.map(element => {
+            if (element.id === newItemToAdd.id) {
+                isNew = false;
+                accumItemsQuantity = accumItemsQuantity + element.quantity + counter;
+
+                return {
+                    ...element,
+                    quantity: element.quantity + counter,
+                }
+            }
+
+            accumItemsQuantity = accumItemsQuantity + element.quantity;
+            return element;
+        });
+
+        if (isNew) {
             setCart((prevState) => [...prevState, newItemToAdd]);
-            newItemToAdd.quantity = counter;
             console.log("Se agrego un nuevo producto");
-        } else {
-            cart.find(element => element.id === newItemToAdd.id).quantity += counter;
-            console.log(`El producto ya existe, se añadio ${counter} en cantidad`, cart)
+            setTotalItemsQuantity(accumItemsQuantity + counter);
+
+            return;
         }
+
+        setCart(updatedCart);
+        setTotalItemsQuantity(accumItemsQuantity);
     }
 
     return (
-        <CartContext.Provider value={{cart, onAddCart}}>
+        <CartContext.Provider value={{cart, onAddCart, totalItemsQuantity}}>
             {children};
         </CartContext.Provider>
     )    

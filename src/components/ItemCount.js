@@ -4,7 +4,10 @@ import { useCart } from '../context/CartContext'
 const ItemCount = ({productDetail}) => {
     const [counter, setCounter] = useState(1);
     
-    const {onAddCart} = useCart();
+    const {onAddCart, totalItemsQuantity, cart} = useCart();
+
+    console.log(`cart`, cart);
+    console.log(`total`, totalItemsQuantity);
 
     const Increment = () => {
         if (counter < productDetail.stock)
@@ -14,6 +17,8 @@ const ItemCount = ({productDetail}) => {
         if (counter > 1)
         setCounter(counter - 1);
     }
+
+
     
     return(
         <div>

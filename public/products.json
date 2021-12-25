@@ -1,7 +1,6 @@
 [
     {
         "id":1,
-        "quantity": 1,
         "productName":"Top de dama",
         "description":"Top para entrenar, modelo 1",
         "detail":"Top deportivo ajustable para que puedas hacer el training de tu preferencia",
@@ -14,7 +13,6 @@
     },
     {
         "id":2,
-        "quantity": 1,
         "productName":"Top de dama",
         "description":"Top para el verano, modelo 1",
         "detail":"Top de venerano con un diseño único y fresco en la parte trasera del mismo, floreado y colorido para que puedas brillar junto con el sol del verano",
@@ -27,7 +25,6 @@
     },
     {
         "id":3,
-        "quantity": 1,
         "productName":"Top de dama",
         "description":"Top para el verano, modelo 2",
         "detail":"Top de venerano con un diseño único y fresco en la parte trasera del mismo, floreado y colorido para que puedas brillar junto con el sol del verano",
@@ -40,7 +37,6 @@
     },
     {
         "id":4,
-        "quantity": 1,
         "productName":"Arreglos",
         "description":"Arreglo general de prendas y/o accesorios",
         "detail":"Cambios de cremalleras de cualquier prenda, surcidos, parches, reducción de talla y mucho más... ",
@@ -53,7 +49,6 @@
     },
     {
         "id":5,
-        "quantity": 1,
         "productName":"Prendas desde 0",
         "description":"Si te gusta alguna prenda en particular, nosotros la replicamos",
         "detail":"Desde vestidos hasta bermudas, cualquier prenda que sea de su agrado podemos hacer una copia!",
