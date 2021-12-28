@@ -5,12 +5,20 @@ import { useParams } from "react-router"
 import { getItemsByProductsCategory } from "../../Services/getItemsByProductsCategory.js"
 import { getItems } from "../../Services/getItems.js"
 import { getItemsByServicesCategory } from "../../Services/getItemsByServicesCategory.js"
+import { collection, getDocs, QuerySnapshot } from "firebase/firestore"
+import { database } from "../../Services/firebase/firabe.js"
 
 const ItemListContainer = () => {
     const { productsOrServices } = useParams();
     const [listProduct, setListProduct] = useState([]);
 
     useEffect(() => {
+
+        getDocs(collection(database, 'items', )).then((querySnapshot) => {
+            
+        })
+
+
         
         if (productsOrServices === "products") {
             

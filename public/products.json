@@ -39,7 +39,7 @@
         "id":4,
         "productName":"Arreglos",
         "description":"Arreglo general de prendas y/o accesorios",
-        "detail":"Cambios de cremalleras de cualquier prenda, surcidos, parches, reducción de talla y mucho más... ",
+        "detail":"Cambios de cremalleras de cualquier prenda, surcidos, parches, reducción de talla y mucho más...",
         "frontPicture":"/json-images/fastener-reparation.jpg",
         "backPicture":"/json-images/fastener-reparation.jpg",
         "stock":1,

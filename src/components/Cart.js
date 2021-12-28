@@ -6,19 +6,6 @@ const  Cart = () => {
     const { cart } = useCart();
     const totalToPay = cart.reduce((a, c) => a + c.price * c.quantity, 0);
 
-    const incrementQuantityInCart = (productCart) => {
-
-        if (cart.quantity > 0) {
-            productCart.quantity += 1
-        }
-    }
-    const decrementQuantityInCart = (productCart) => {
-
-        if (cart.quantity > 0) {
-            productCart.quantity -= 1
-        }
-    }
-
     return (
         <>
             <h1>Items agregados al carrito:</h1>
@@ -28,7 +15,7 @@ const  Cart = () => {
                     <h2>EL CARRITO ESTA VACIO</h2>
                     <br></br>
                     <h3>Para empezar a comprar puede ver nuestros productos y servicios a través del siguiente enlace:</h3>
-                    <NavLink to="/productsAndServices"><b>Productos y servicios</b></NavLink>
+                    <NavLink to="/"><b>Productos y servicios</b></NavLink>
                 </div>
             )}
             <div>
@@ -44,8 +31,6 @@ const  Cart = () => {
                             <td>Precio: {productCart.price}</td>
                             <td>Cantidad deseada: {productCart.quantity}</td>
                             <td>
-                                <button onClick={() => decrementQuantityInCart(productCart)}>-</button>
-                                <button onClick={() => incrementQuantityInCart(productCart)}>+</button>
                                 <button >Remover Item</button>
                             </td>
                         </tr>
