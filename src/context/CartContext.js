@@ -14,6 +14,26 @@ const useCart = () => {
     const [cart, setCart] = useState([]);
     const [totalItemsQuantity, setTotalItemsQuantity] = useState(0);
 
+    const removeItem = (index, qtyToSubtract) => {
+        console.log(`cart1`, cart)
+        cart.splice(index,1);
+        console.log(`cart2`, cart)
+
+        let updatingCart = cart.map(element => {
+            return {...element}
+
+        }
+            )
+        console.log(`cart3`, updatingCart);
+        setCart(updatingCart);
+        setTotalItemsQuantity(totalItemsQuantity - qtyToSubtract);
+    }
+
+    const cleanTheCart = () => {
+        setCart([]);
+        setTotalItemsQuantity(0);
+    }
+
     const onAddCart = (productDetail, counter) => {
         let accumItemsQuantity = 0;
         let isNew = true;
@@ -52,7 +72,13 @@ const useCart = () => {
     }
 
     return (
-        <CartContext.Provider value={{cart, onAddCart, totalItemsQuantity}}>
+        <CartContext.Provider value={{
+            cart,
+            onAddCart,
+            totalItemsQuantity, 
+            removeItem, 
+            cleanTheCart
+            }}>
             {children};
         </CartContext.Provider>
     )    

@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const  Cart = () => {
-    const { cart } = useCart();
+    const { cart, removeItem, cleanTheCart } = useCart();
     const totalToPay = cart.reduce((a, c) => a + c.price * c.quantity, 0);
+    console.log(`cart`, cart);
 
     return (
         <>
@@ -23,7 +24,7 @@ const  Cart = () => {
                     <tbody>
                     {cart.map((productCart,index) => {
                     return (
-                        <tr key={index}>
+                        <tr key={index} id={productCart.id}>
                             <td>
                                 <img src={ productCart.picture } alt="asdf" style={{width: "3rem"}}/>
                             </td>
@@ -31,7 +32,7 @@ const  Cart = () => {
                             <td>Precio: {productCart.price}</td>
                             <td>Cantidad deseada: {productCart.quantity}</td>
                             <td>
-                                <button >Remover Item</button>
+                                <button className='btn btn-danger' onClick={() => removeItem(index, productCart.quantity)}>Remover Item</button>
                             </td>
                         </tr>
                     )
@@ -47,6 +48,13 @@ const  Cart = () => {
                     </tfoot>
                 )}
                 </table>
+                {cart.length !== 0 && (
+                    <>
+                        <button className='btn btn-success' onClick={cleanTheCart}>Pagar</button>
+                        <button className='btn btn-danger' onClick={cleanTheCart}>Limpiar carrito</button>
+                    </>
+                )}
+                
             </div>
             </>
     )
