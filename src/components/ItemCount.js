@@ -4,10 +4,7 @@ import { useCart } from '../context/CartContext'
 const ItemCount = ({productDetail}) => {
     const [counter, setCounter] = useState(1);
     
-    const {onAddCart, totalItemsQuantity, cart} = useCart();
-
-    console.log(`cart`, cart);
-    console.log(`total`, totalItemsQuantity);
+    const {onAddCart} = useCart();
 
     const Increment = () => {
         if (counter < productDetail.stock)
@@ -18,15 +15,13 @@ const ItemCount = ({productDetail}) => {
         setCounter(counter - 1);
     }
 
-
-    
     return(
         <div>
             <span>{counter}</span>
             <button onClick={Increment}>+</button>
             <button onClick={Decrement}>-</button>
             <div>
-                <button onClick={()=> onAddCart(productDetail, counter)}>Agregar al carrito PRUEBA</button>
+                <button onClick={()=> onAddCart(productDetail, counter)}>Agregar al carrito</button>
             </div>
             <span>Stock: {productDetail.stock}</span>
         </div>

@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from "react"
 import ItemCount from "../ItemCount"
 import { useParams } from "react-router"
-import { getDetailItem } from "../../Services/getDetailItem"
+import { getDoc, doc } from 'firebase/firestore'
+import { database } from "../../Services/firebase/firabe";
 
 
 const ItemDetail = () => {
     const { id } = useParams();
     const [productDetail, setProductDetail] = useState({});
+    const [loading, setLoading] = useState(true);
+    
      
       useEffect(() => {
+        setLoading(true);
+        getDoc(doc(database, 'items', id)).then((querySnapshot) => {
+            const product = { id: querySnapshot.id, ...querySnapshot.data()};
+            setProductDetail(product);
+        }).catch((error) => {
+            console.log("Error shearching the product", error);
+        }).finally(() => {
+            setLoading(false);
+        })
 
-        getDetailItem(id)
-        .then(res => setProductDetail(res));
-
+        return (() => {
+          setProductDetail();
+        })
       },[id])
+
+      if(loading) {
+        return <h1>Loading...</h1>
+      }
 
     return (
         <React.Fragment>

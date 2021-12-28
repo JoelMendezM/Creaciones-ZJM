@@ -42,7 +42,6 @@ const useCart = () => {
 
         if (isNew) {
             setCart((prevState) => [...prevState, newItemToAdd]);
-            console.log("Se agrego un nuevo producto");
             setTotalItemsQuantity(accumItemsQuantity + counter);
 
             return;

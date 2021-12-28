@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react"
-import { getItems } from "../../Services/getItems";
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { useParams } from "react-router"
+import { getDoc, doc } from 'firebase/firestore'
+import { database } from "../../Services/firebase/firabe";
 
 const ItemDetailContainer = () => {
-console.log("ItemDetailContainer");    
+    const { id } = useParams();
     const [itemDetailDescription, setItemDetailDescription] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     
     useEffect(() => {
-        getItems().then(rsp => rsp);
+        setLoading(true);
+        getDoc(doc(database, 'items', id)).then((querySnapshot) => {
+            const product = { id: querySnapshot.id, ...querySnapshot.data()};
+            setItemDetailDescription(product);
+        }).catch((error) => {
+            console.log("Error shearching the product", error);
+        }).finally(() => {
+            setLoading(false);
+        })
 
-        const listP = getItems();
+        return (() => {
+            setItemDetailDescription();
+        })
+    },[id])
 
-        (async () => {
-            const productList = await listP;
-            setItemDetailDescription(productList)
-        })()
-    },[])
-
-    console.log(itemDetailDescription);
-
+    if(loading) {
+        return <h1>Loading...</h1>
+    }
 
     return (
         <React.Fragment>

@@ -2,37 +2,52 @@ import { useState, useEffect } from "react"
 import ItemList from "../ItemList/ItemList.js"
 import { DropDownButton } from "../DropDownButton/DropDownButton.js"
 import { useParams } from "react-router"
-import { getItemsByProductsCategory } from "../../Services/getItemsByProductsCategory.js"
-import { getItems } from "../../Services/getItems.js"
-import { getItemsByServicesCategory } from "../../Services/getItemsByServicesCategory.js"
-import { collection, getDocs, QuerySnapshot } from "firebase/firestore"
+import { collection, getDocs } from "firebase/firestore"
 import { database } from "../../Services/firebase/firabe.js"
 
 const ItemListContainer = () => {
+    //productsOrServices representa la categoría (si es un servicio o un producto)
     const { productsOrServices } = useParams();
+    const [loading, setLoading] = useState(true);
     const [listProduct, setListProduct] = useState([]);
 
     useEffect(() => {
-
+        setLoading(true);
         getDocs(collection(database, 'items', )).then((querySnapshot) => {
+            const products = querySnapshot.docs.map(doc => {
+                
+                return { id: doc.id, ...doc.data()}
+            })
             
-        })
+            if (productsOrServices === "products") {
+                const findingProductByCategory = products.filter(productCategory => 
+                productCategory.productsOrServices === "products");
 
+                return setListProduct(findingProductByCategory);
 
-        
-        if (productsOrServices === "products") {
-            
-            getItemsByProductsCategory(productsOrServices).then(res => setListProduct(res));
-            
-        } else if (productsOrServices === "services") {
-        getItemsByServicesCategory(productsOrServices).then(res => setListProduct(res));
+            } else if (productsOrServices === "services") {
+                const findingServicesByCategory = products.filter(productCategory => 
+                productCategory.productsOrServices === "services");
+
+                return setListProduct(findingServicesByCategory);
 
             } else {
-                getItems().then(res => setListProduct(res));
+                setListProduct(products);
+            }
+        }).catch((error) => {
+            console.log("Error shearching products", error);
+        }).finally(() => {
+            setLoading(false);
+        })
 
+        return (() => {
+            setListProduct([]);
+        })
+    },[productsOrServices]);
+
+    if(loading) {
+        return <h1>Loading...</h1>
     }
-    },[productsOrServices,listProduct]);
-
 
     return (
         <div>
