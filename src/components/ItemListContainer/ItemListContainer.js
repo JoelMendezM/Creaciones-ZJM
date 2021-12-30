@@ -4,6 +4,7 @@ import { DropDownButton } from "../DropDownButton/DropDownButton.js"
 import { useParams } from "react-router"
 import { collection, getDocs } from "firebase/firestore"
 import { database } from "../../Services/firebase/firabe.js"
+import './ItemListContainer.css'
 
 const ItemListContainer = () => {
     //productsOrServices representa la categoría (si es un servicio o un producto)
@@ -46,7 +47,7 @@ const ItemListContainer = () => {
     },[productsOrServices]);
 
     if(loading) {
-        return <h1>Loading...</h1>
+        return <span className="spinner spinner-slow"></span>
     }
 
     return (

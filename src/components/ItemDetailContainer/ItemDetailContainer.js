@@ -27,7 +27,7 @@ const ItemDetailContainer = () => {
     },[id])
 
     if(loading) {
-        return <h1>Loading...</h1>
+        return <span className="spinner spinner-slow"></span>
     }
 
     return (

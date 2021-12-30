@@ -1,0 +1,22 @@
+img.card-img-top {
+    max-height: 105.46px;
+    min-height: 200px;
+}
+
+div.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 63.94px;
+
+}
+
+a.btn.btn-primary {
+    display: flex;
+    align-items: baseline;
+}
+
+div.itemListContainer {
+    display: flex;
+    justify-content: center;
+}
