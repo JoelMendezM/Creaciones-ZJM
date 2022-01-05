@@ -35,6 +35,11 @@ const useCart = () => {
     }
 
     const onAddCart = (productDetail, counter) => {
+        if (productDetail.stock === 0) {
+
+            return alert('Producto momentaneamente sin stock, por favor elija otro producto');
+        }
+
         let accumItemsQuantity = 0;
         let isNew = true;
         const newItemToAdd = {

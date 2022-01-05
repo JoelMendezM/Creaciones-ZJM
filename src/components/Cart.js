@@ -1,11 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+// import { addDoc, collection } from 'firebase/firestore';
+import { database } from '../Services/firebase/firabe';
+import { doc, addDoc, collection, Timestamp, writeBatch, getDoc } from 'firebase/firestore';
 
 const  Cart = () => {
+    const [processingOrder, setProcessingOrder] = useState(true);
+    const [showFormContact, setShowFormContact] = useState(false);
     const { cart, removeItem, cleanTheCart } = useCart();
     const totalToPay = cart.reduce((a, c) => a + c.price * c.quantity, 0);
-    console.log(`cart`, cart);
+    
+    const confirmOrder = () => {
+        const objOrder = {
+            buyer: 'Joel',
+            items: cart,
+            total: totalToPay,
+            phoneNumber: 1166662222,
+            email: 'asdf@asdf.com',
+            date: Timestamp.fromDate(new Date())
+        }
+
+        const batch = writeBatch(database);
+        const outOfStock = [];
+
+        objOrder.items.forEach((prod) => {
+            getDoc(doc(database, 'items', prod.id)).then((documentSnapshot) => {
+                if(documentSnapshot.data().stock >= prod.quantity) {
+                    batch.update(doc(database, 'items', documentSnapshot.id), {
+                        stock: documentSnapshot.data().stock - prod.quantity
+                    })
+                } else {
+                    outOfStock.push({ id: documentSnapshot.id, ...documentSnapshot.data()})
+                }
+            })
+        })
+
+        if(outOfStock.length === 0) {
+            addDoc(collection(database, 'orders'), objOrder).then(({ id }) => {
+                batch.commit().then(() => {
+                    console.log(`id`, id);
+
+                })    
+            }).catch((error) => {
+                console.log('Error adding products', error);
+            }).finally(() => {
+                setProcessingOrder(false);
+                cleanTheCart();
+            })
+        }
+
+        if(processingOrder) {
+            return <h1>Procesando su orden, aguarde un momento por favor</h1>;
+        }
+    }
 
     return (
         <>
@@ -50,10 +98,35 @@ const  Cart = () => {
                 </table>
                 {cart.length !== 0 && (
                     <>
-                        <button className='btn btn-success' onClick={cleanTheCart}>Pagar</button>
-                        <button className='btn btn-danger' onClick={cleanTheCart}>Limpiar carrito</button>
+                      <button className='btn btn-success' onClick={() => setShowFormContact(true)}>Contacto</button>
+                      <button className='btn btn-success' onClick={confirmOrder}>Confirmar compra</button>
+                      <button className='btn btn-danger' onClick={() => {setShowFormContact(false); cleanTheCart();}}>Limpiar carrito</button>
                     </>
                 )}
+
+        {
+          showFormContact ?
+              <div className='container mt-5'>
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Nombre y apellido</label>
+                    <input type="password" className="form-control" id="exampleInputName1"/>
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Phone</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1"/>
+                  </div>
+                  {/* <button className='btn btn-success' onClick={() => confirmOrder}>Confirmar compra</button> */}
+                  <button className='btn btn-danger' onClick={() => setShowFormContact(false)}>Cancelar</button>
+                </form>
+              </div>
+            :
+            null
+            }
                 
             </div>
             </>
