@@ -1,4 +1,4 @@
-import logo from '../../images/logo-carrito-compras.png';
+import cartImage from '../../images/logo-carrito-compras.png';
 import { useCart } from '../../context/CartContext';
 
 const CardWidget = () => {
@@ -7,20 +7,24 @@ const CardWidget = () => {
   return (
     <>
       {cart.length === 0 && (
-        <>
+        <div className="buttonCartContainer">
+          <h4 className="countingItems">{totalItemsQuantity}</h4>
           <img
-            src={logo}
+            src={cartImage}
             alt="carrito de compras"
-            style={{ widht: 30, height: 30, margin: 20, opacity: 0.3 }}
+            style={{ widht: 30, height: 30, margin: 15, opacity: 0.3 }}
           />
-          <h4>{totalItemsQuantity}</h4>
-        </>
+        </div>
       )}
       {cart.length > 0 && (
-        <>
-          <img src={logo} alt="carrito de compras" style={{ widht: 30, height: 30, margin: 20 }} />
-          <h4>{totalItemsQuantity}</h4>
-        </>
+        <div className="buttonCartContainer">
+          <h4 className="countingItems">{totalItemsQuantity}</h4>
+          <img
+            src={cartImage}
+            alt="carrito de compras"
+            style={{ widht: 30, height: 30, margin: 15 }}
+          />
+        </div>
       )}
     </>
   );

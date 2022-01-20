@@ -5,3 +5,18 @@
 li.nav-item {
   margin: 0 10px;
 }
+
+div.buttonCartContainer {
+  display: flex;
+}
+
+.buttonCart {
+  padding: 0;
+  margin-top: 0.5rem;
+  margin-left: 0.65rem;
+}
+
+button.navbar-toggler {
+  margin-right: 0.65rem;
+  margin-bottom: 0.5rem;
+}

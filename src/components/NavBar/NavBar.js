@@ -1,14 +1,16 @@
 import './Navbar.css';
 import CardWidget from './CardWidget.js';
 import { NavLink } from 'react-router-dom';
+import logo from '../../images/logo-name-project.jpg';
+import { Logo } from '../../elements/Forms';
 
 const NavBar = () => {
   return (
     <>
-      <nav className="navbarstyle navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbarstyle navbar navbar-expand-md navbar-light bg-light">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            Creaciones ZJM
+            <Logo src={logo} alt="logo" />
           </NavLink>
           <button
             className="navbar-toggler"
@@ -45,10 +47,10 @@ const NavBar = () => {
               </li>
             </ul>
           </div>
+          <NavLink className="nav-link btn btn-outline-primary buttonCart" to="/cart">
+            <CardWidget />
+          </NavLink>
         </div>
-        <NavLink className="nav-link btn btn-outline-primary" to="/cart">
-          <CardWidget />
-        </NavLink>
       </nav>
     </>
   );

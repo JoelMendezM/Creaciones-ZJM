@@ -7,7 +7,6 @@ div.card-body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 63.94px;
 }
 
 a.btn.btn-primary {
@@ -19,6 +18,7 @@ div.itemListContainer {
   display: flex;
   justify-content: center;
   margin: 15px 0px;
+  flex-wrap: wrap;
 }
 
 div.card {
@@ -29,4 +29,16 @@ div.card {
 
 img.d-block.w-100 {
   border-radius: 5px;
+}
+
+h4.countingItems {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+a.container {
+  display: flex;
+  padding: 0;
 }

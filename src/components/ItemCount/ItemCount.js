@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
+import { CounterButton } from '../../elements/Forms';
 
 const ItemCount = ({ productDetail }) => {
   const [counter, setCounter] = useState(1);
@@ -15,11 +16,13 @@ const ItemCount = ({ productDetail }) => {
 
   return (
     <div>
+      <button onClick={Decrement}>-</button>
       <span>{counter}</span>
       <button onClick={Increment}>+</button>
-      <button onClick={Decrement}>-</button>
       <div>
-        <button onClick={() => onAddCart(productDetail, counter)}>Agregar al carrito</button>
+        <CounterButton onClick={() => onAddCart(productDetail, counter)}>
+          Agregar al carrito
+        </CounterButton>
       </div>
     </div>
   );
